@@ -22,12 +22,12 @@ public class App {
         
         // pegar só os dados que interessam (titulo, poster, classificação)
         var parser = new JsonParser();
-        List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        List<Map<String, String>> listaDeConteudos = parser.parse(body);
 
         // exibir e manipular os dados
         System.out.println("======================================================================================");
         
-        for (Map<String,String> filme : listaDeFilmes) {
+        for (Map<String,String> filme : listaDeConteudos) {
             //String urlImagem = filme.get("image");
             String urlImagem = filme.get("url");
             String titulo = filme.get("title");
