@@ -14,10 +14,6 @@ public class App {
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
-        // pegar só os dados que interessam (titulo, poster, classificação)
-        var parser = new JsonParser();
-        List<Map<String, String>> listaDeConteudos = parser.parse(json);
-
         // exibir e manipular os dados
         System.out.println("======================================================================================");
 
