@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDaNasa {
-
+public class ExtratorDeConteudoDoIMDB {
+  
   public List<Conteudo> extraiConteudos(String json) {
 
     // extrair só os dados que interessam (titulo, poster, classificação)
@@ -15,7 +15,8 @@ public class ExtratorDeConteudoDaNasa {
     // precisamos popular a lista de conteúdos
     for (Map<String, String> atributos : listaDeAtributos) {
       String titulo = atributos.get("title");
-      String urlImagem = atributos.get("url");
+      String urlImagem = atributos.get("image")
+      .replaceAll("(@+)(.*).jpg$", "$1.jpg");
 
       // aqui criamos o conteúdo
       var conteudo = new Conteudo(titulo, urlImagem);
@@ -25,5 +26,4 @@ public class ExtratorDeConteudoDaNasa {
 
     return conteudos;
   }
-
 }

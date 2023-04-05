@@ -14,21 +14,24 @@ public class App {
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
+        // após criar as classes dos extratores, aqui eu crio um extrator da nasa
+        ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
+        List<Conteudo> conteudos = extrator.extraiConteudos(json);
+
         // exibir e manipular os dados
         System.out.println("======================================================================================");
 
-        for (Map<String, String> filme : listaDeConteudos) {
-            // String urlImagem = filme.get("image");
-            String urlImagem = filme.get("url");
-            String titulo = filme.get("title");
+        for (int i = 0; i < 3; i++) {
 
-            InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = "saida/" + titulo + ".png";
+            Conteudo conteudo = conteudos.get(i);
+
+            InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
+            String nomeArquivo = "saida/" + conteudo.getTitulo() + ".png";
 
             var geradora = new GeradoraDeFigurinhas();
             geradora.cria(inputStream, nomeArquivo);
 
-            System.out.println(filme.get("title"));
+            System.out.println(conteudo.getTitulo());
             System.out.println();
         }
     }
