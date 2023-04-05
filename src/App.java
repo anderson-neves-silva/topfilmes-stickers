@@ -1,21 +1,23 @@
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
         // fazer uma conexão HTTP e buscar ps top 250 filmes
-        // String url =
-        // "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
-        String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2022-06-12&end_date=2022-06-14";
+        //String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2022-06-12&end_date=2022-06-14";
+        String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
 
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
 
         // após criar as classes dos extratores, aqui eu crio um extrator da nasa
-        ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
+        //ExtratorDeConteudoDaNasa extrator = new ExtratorDeConteudoDaNasa();
+        //List<Conteudo> conteudos = extrator.extraiConteudos(json);
+
+        // fazendo a chamada para o extrator do IMDB
+        ExtratorDeConteudoDoIMDB extrator = new ExtratorDeConteudoDoIMDB();
         List<Conteudo> conteudos = extrator.extraiConteudos(json);
 
         // exibir e manipular os dados
