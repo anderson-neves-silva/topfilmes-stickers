@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDoIMDB {
+/*
+- agora como já criei a interface, preciso dizer que essa classe segue aquele contrato ou implementa aquela 
+interface criada a ExtratorDeConteudo, a classe da nasa também precisa fazer isso
+*/ 
+public class ExtratorDeConteudoDoIMDB implements ExtratorDeConteudo {
   
   public List<Conteudo> extraiConteudos(String json) {
 
